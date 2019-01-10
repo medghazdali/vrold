@@ -1,0 +1,92 @@
+{% extends 'AdminBundle::index.html.twig' %}
+{% block body %}
+
+
+<div class="container">
+
+
+	<table class="table table-bordered search-table" >
+		<thead> 
+
+		<tr>
+
+		<th></th>
+		<th>title</th>
+		<th>link</th>
+		<th>email</th>
+		<th>Media</th>
+		<th>dateJoin</th>
+		<th width="10%" >Action</th>
+
+
+		</tr>
+		</thead> 
+
+		<tbody>
+
+		{% for website in websites %}
+
+			<tr>
+
+
+			<td style="width:120px" ><img style="width:100%"  src="{{asset('uploads/documents/website/'~website.path)}}"> </td>
+			<td>{{website.name}} </td>
+			<td> <a target="_blank" href="{{website.link}}">{{website.link}}</a> </td>
+			<td>{{website.email}}</td>
+			<td>{{website.facebook}} <br> {{website.youtube}} </td>
+			<td>{{website.dateJoin|date("m/d/Y")}}</td>
+
+			
+			<td>
+
+        		<a style="margin-bottom:5px" class="btn btn-sm btn-warning" href="{{path('EditWebsite',{'id':website.id})}}"><i class="fa fa-edit" aria-hidden="true"> </i> </a>
+        		<a style="margin-bottom:5px" class="btn btn-sm btn-danger" href="{{path('EditWebsite',{'id':website.id})}}"><i class="fa fa-trash" aria-hidden="true"> </i> </a>
+        		<a style="margin-bottom:5px" class="btn btn-sm btn-info" href="{{path('EditWebsite',{'id':website.id})}}"><i class="fa fa-list" aria-hidden="true"> </i> </a>
+
+
+			</td>
+
+
+			</tr>
+
+
+		{% endfor %}
+
+
+
+		</tbody>
+
+	</table>
+
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+			$(document).ready(function(){
+				$('table.search-table').tableSearch({
+					searchText:'Rechercher    ',
+					searchPlaceHolder:' '
+				});
+			});
+$(document).ready(function(){
+
+
+ $(".delete").click(function(event){
+    if (confirm("voulez vous vraiment supprimer ?") == true) {
+    } else {
+        event.preventDefault();
+location.reload();
+
+
+    }    });
+});
+
+</script>
+
+
+
+    {% endblock %}
+
+

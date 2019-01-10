@@ -1,0 +1,12 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Admin:dash }
+AddWebsite:
+    path:     /AddWebsite
+    defaults: { _controller: AdminBundle:Website:AddWebsite }
+EditWebsite:
+    path:     /EditWebsite/{id}
+    defaults: { _controller: AdminBundle:Website:EditWebsite }
+ListWebsite:
+    path:     /ListWebsite
+    defaults: { _controller: AdminBundle:Website:ListWebsite }
